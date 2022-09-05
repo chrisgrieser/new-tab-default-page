@@ -1,7 +1,7 @@
 {
 	"id": "new-tab-default-page",
 	"name": "Default New Tab Page",
-	"version": "0.1.0",
+	"version": "0.2.0",
 	"minAppVersion": "0.16.0",
 	"description": "When opening a new tab, automatically open a note of your choice in that tab.",
 	"author": "pseudometa",

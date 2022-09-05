@@ -1,0 +1,4 @@
+- 2022-09-05	release 0.2.0
+- 2022-09-05	first working prototype
+- 2022-09-05	base version
+- 2022-09-05	Initial commit
