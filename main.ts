@@ -13,8 +13,8 @@ export default class defaultNewTabPage extends Plugin {
 		this.addSettingTab(new DefaultNewTabPageSettingTab(this.app, this));
 
 		// this event is triggered every time a new file is opened, even in the
-		// same tab. However, the 'window-open' event does not seem to work new
-		// tabs, therefore this event is taken, with a check in the callback
+		// same tab. However, the 'window-open' event does not seem to work for
+		// new tabs. Therefore this event is used, with a check in the callback
 		// function that it is indeed a new empty pane that was opened.
 		this.registerEvent(
 			this.app.workspace.on("file-open", this.openNewTabPage)
@@ -51,7 +51,7 @@ export default class defaultNewTabPage extends Plugin {
 			return;
 		}
 
-		// @ts-ignore
+		// @ts-ignore (guard clause above already ensures tFiletoOpen is a TFile)
 		await app.workspace.activeLeaf.openFile(tFiletoOpen);
 	};
 }
