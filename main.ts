@@ -25,7 +25,6 @@ export default class defaultNewTabPage extends Plugin {
 
 	async loadSettings() {
 		this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
-		console.log("setting loaded: " + this.settings.filePath);
 	}
 
 	async saveSettings() {
@@ -34,10 +33,9 @@ export default class defaultNewTabPage extends Plugin {
 
 	async onunload() { console.log("New Tab Default Page Plugin unloaded.") }
 
-	async openNewTabPage () {
-		const newTabPage = this.settings.filePath;
-		console.log(`new tab page: ${newTabPage}`);
-		return;
+	openNewTabPage = async () => {
+		let newTabPage = this.settings.filePath;
+		if (!newTabPage.endsWith(".md")) newTabPage += ".md"; // `getAbstractFileByPath` requires the correct file ending
 
 		// abort when not empty tab
 		const tabNotEmpty = Boolean(app.workspace.getActiveFile());
@@ -47,13 +45,13 @@ export default class defaultNewTabPage extends Plugin {
 		if (!newTabPage) return;
 
 		// abort when path invalid
-		const tFiletoOpen = app.vault.getAbstractFileByPath(newTabPage);
-		if (tFiletoOpen instanceof TFile) {
+		const tFiletoOpen = this.app.vault.getAbstractFileByPath(newTabPage);
+		if (!(tFiletoOpen instanceof TFile)) {
 			console.error(`filepath to open is invalid: ${newTabPage}`);
 			return;
 		}
 
 		// @ts-ignore
 		await app.workspace.activeLeaf.openFile(tFiletoOpen);
-	}
+	};
 }
