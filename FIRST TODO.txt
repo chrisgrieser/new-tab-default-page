@@ -1,0 +1,23 @@
+Replace throughout the repo: 
+{{plugin-name}}
+{{plugin-id}}
+{{plugin-desc}}
+{{plugin-class}}
+
+---
+
+add/remove style.css from the release.yml
+
+---
+
+to copypaste into the obsidian releases json: 
+https://github.com/obsidianmd/obsidian-releases/blob/master/community-plugins.json
+
+    },
+    {
+        "id": "{{plugin-id}}",
+        "name": "{{plugin-name}}",
+        "author": "pseudometa",
+        "description": "{{plugin-desc}}",
+        "repo": "chrisgrieser/{{plugin-id}}"
+    }
