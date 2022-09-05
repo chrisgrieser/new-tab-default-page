@@ -1,23 +1,12 @@
-Replace throughout the repo: 
-{{plugin-name}}
-{{plugin-id}}
-{{plugin-desc}}
-{{plugin-class}}
 
----
-
-add/remove style.css from the release.yml
-
----
-
-to copypaste into the obsidian releases json: 
+to copypaste into the obsidian releases json:
 https://github.com/obsidianmd/obsidian-releases/blob/master/community-plugins.json
 
     },
     {
-        "id": "{{plugin-id}}",
-        "name": "{{plugin-name}}",
+        "id": "new-tab-default-page",
+        "name": "New Tab Default Page",
         "author": "pseudometa",
-        "description": "{{plugin-desc}}",
-        "repo": "chrisgrieser/{{plugin-id}}"
+        "description": "When opening a new tab, automatically open a note of your choice in that tab.",
+        "repo": "chrisgrieser/new-tab-default-page"
     }

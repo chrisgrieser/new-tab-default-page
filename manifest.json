@@ -1,10 +1,10 @@
 {
-	"id": "{{plugin-id}}",
-	"name": "{{plugin-name}}",
+	"id": "new-tab-default-page",
+	"name": "Default New Tab Page",
 	"version": "0.1.0",
-	"minAppVersion": "0.13.19",
-	"description": "{{plugin-desc}}",
+	"minAppVersion": "0.16.0",
+	"description": "When opening a new tab, automatically open a note of your choice in that tab.",
 	"author": "pseudometa",
 	"authorUrl": "https://chris-grieser.de/",
-	"isDesktopOnly": false
+	"isDesktopOnly": true
 }
