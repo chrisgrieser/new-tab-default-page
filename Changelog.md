@@ -1,3 +1,5 @@
+- 2022-09-05	release 0.2.1
+- 2022-09-05	notice on invalid path of newTabPage
 - 2022-09-05	release 0.2.0
 - 2022-09-05	first working prototype
 - 2022-09-05	base version
