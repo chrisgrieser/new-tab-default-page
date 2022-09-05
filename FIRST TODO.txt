@@ -7,6 +7,6 @@ https://github.com/obsidianmd/obsidian-releases/blob/master/community-plugins.js
         "id": "new-tab-default-page",
         "name": "New Tab Default Page",
         "author": "pseudometa",
-        "description": "When opening a new tab, automatically open a note of your choice in that tab.",
+        "description": "Open a note of your choice when creating a new tab, like in the browser.",
         "repo": "chrisgrieser/new-tab-default-page"
     }

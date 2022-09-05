@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/github/downloads/chrisgrieser/new-tab-default-page/total?label=Total%20Downloads&style=plastic) ![](https://img.shields.io/github/v/release/chrisgrieser/new-tab-default-page?label=Latest%20Release&style=plastic) [![](https://img.shields.io/badge/changelog-click%20here-FFE800?style=plastic)](Changelog.md)
 
-When opening a new tab, automatically open a note of your choice in that tab.
+[Obsidian](https://obsidian.md/) plugin to open a note of your choice when creating a new tab, like in the browser.
 
 ## Table of Contents
 <!-- MarkdownTOC -->
