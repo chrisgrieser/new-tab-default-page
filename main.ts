@@ -1,4 +1,4 @@
-import { Plugin, TFile } from "obsidian";
+import { Notice, Plugin, TFile } from "obsidian";
 import { DefaultNewTabPageSettingTab } from "./settings";
 
 interface DefaultNewTabPageSettings { filePath: string }
@@ -35,7 +35,7 @@ export default class defaultNewTabPage extends Plugin {
 
 	openNewTabPage = async () => {
 		let newTabPage = this.settings.filePath;
-		if (!newTabPage.endsWith(".md")) newTabPage += ".md"; // `getAbstractFileByPath` requires the correct file ending
+		if (!newTabPage.endsWith(".md")) newTabPage += ".md"; // `getAbstractFileByPath` requires a file ending
 
 		// abort when not empty tab
 		const tabNotEmpty = Boolean(app.workspace.getActiveFile());
@@ -48,6 +48,7 @@ export default class defaultNewTabPage extends Plugin {
 		const tFiletoOpen = this.app.vault.getAbstractFileByPath(newTabPage);
 		if (!(tFiletoOpen instanceof TFile)) {
 			console.error(`filepath to open is invalid: ${newTabPage}`);
+			new Notice (`${newTabPage} is not a valid path to a note in your vault.`);
 			return;
 		}
 
