@@ -8,7 +8,7 @@
 - Set the note (or image) you want to load in new tabs in the settings.
 - Open a new tab.
 
-ℹ️ *Whether the new note is opened in Reading Mode or Edit Mode is determined by the Obsidian setting `Editor → Default view for new tabs`.*
+ℹ️ *Whether the new note is opened in Reading Mode or Edit Mode is determined by the Obsidian setting `Editor → Default view for new tabs`. You can also force a different mode with the [Force View Mode Plugin](https://obsidian.md/plugins?id=obsidian-view-mode-by-frontmatter).*
 
 ## Installation
 Available in Obsidian's Community Plugin Browser via: `Settings` → `Community Plugins` → `Browse` → Search for *"New Tab Default Page"*
