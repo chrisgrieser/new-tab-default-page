@@ -59,7 +59,6 @@ export default class defaultNewTabPage extends Plugin {
 			return;
 		}
 
-		app.workspace.setActiveLeaf(leaf, false, true); // ensure this is the active leaf, since `layout-change` can trigger before the the leaf becomes active
 		app.workspace.activeLeaf.openFile(tFiletoOpen);
 	}
 
