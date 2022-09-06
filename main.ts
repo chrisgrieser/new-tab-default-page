@@ -45,7 +45,7 @@ export default class defaultNewTabPage extends Plugin {
 
 		// abort when path invalid
 		const tFiletoOpen = this.app.metadataCache.getFirstLinkpathDest(newTabPage, "/"); // `getFirstLinkpathDest` more reliably finds match than `getAbstractFileByPath`, e.g. with missing file extensions
-		if (!(tFiletoOpen instanceof TFile)) {
+		if (!tFiletoOpen) {
 			console.error(`filepath to open is invalid: ${newTabPage}`);
 			new Notice (`${newTabPage} is not a valid path to a note in your vault.`);
 			return;

@@ -17,7 +17,7 @@ export class DefaultNewTabPageSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("Default New Tab Page")
-			.setDesc("Path of the note that will be opened in new tabs")
+			.setDesc("Path of the note that will be opened in new tabs. (Images and PDFs also work.)")
 			.addText((text) => text
 				.setPlaceholder("Meta/Homepage.md")
 				.setValue(this.plugin.settings.filePath)
