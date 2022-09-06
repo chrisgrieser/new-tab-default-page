@@ -34,8 +34,7 @@ export default class defaultNewTabPage extends Plugin {
 	async onunload() { console.log("New Tab Default Page Plugin unloaded.") }
 
 	openNewTabPage = async () => {
-		let newTabPage = this.settings.filePath;
-		if (!newTabPage.endsWith(".md")) newTabPage += ".md"; // `getAbstractFileByPath` requires a file ending
+		const newTabPage = this.settings.filePath;
 
 		// abort when not empty tab
 		const tabNotEmpty = Boolean(app.workspace.getActiveFile());
@@ -45,7 +44,7 @@ export default class defaultNewTabPage extends Plugin {
 		if (!newTabPage) return;
 
 		// abort when path invalid
-		const tFiletoOpen = this.app.vault.getAbstractFileByPath(newTabPage);
+		const tFiletoOpen = this.app.metadataCache.getFirstLinkpathDest(newTabPage, "/"); // `getFirstLinkpathDest` more reliably finds match than `getAbstractFileByPath`, e.g. with missing file extensions
 		if (!(tFiletoOpen instanceof TFile)) {
 			console.error(`filepath to open is invalid: ${newTabPage}`);
 			new Notice (`${newTabPage} is not a valid path to a note in your vault.`);
