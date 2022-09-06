@@ -59,7 +59,7 @@ export default class defaultNewTabPage extends Plugin {
 			return;
 		}
 
-		app.workspace.activeLeaf.openFile(tFiletoOpen);
+		leaf.openFile(tFiletoOpen);
 	}
 
 }
