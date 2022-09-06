@@ -36,12 +36,12 @@ export default class defaultNewTabPage extends Plugin {
 	openNewTabPage = async () => {
 		const newTabPage = this.settings.filePath;
 
+		// abort when setting empty (e.g., on install)
+		if (!newTabPage) return;
+
 		// abort when not empty tab
 		const tabNotEmpty = Boolean(app.workspace.getActiveFile());
 		if (tabNotEmpty) return;
-
-		// abort when setting empty (e.g., on install)
-		if (!newTabPage) return;
 
 		// abort when path invalid
 		const tFiletoOpen = this.app.metadataCache.getFirstLinkpathDest(newTabPage, "/"); // `getFirstLinkpathDest` more reliably finds match than `getAbstractFileByPath`, e.g. with missing file extensions
