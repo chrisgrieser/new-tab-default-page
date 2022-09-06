@@ -51,7 +51,6 @@ export default class defaultNewTabPage extends Plugin {
 			return;
 		}
 
-		// @ts-ignore (guard clause above already ensures tFiletoOpen is a TFile)
 		await app.workspace.activeLeaf.openFile(tFiletoOpen);
 	};
 }

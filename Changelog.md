@@ -1,3 +1,6 @@
+- 2022-09-06	release 0.3.0
+- 2022-09-06	getFirstLinkpathDest not getAbstractFileByPath
+- 2022-09-05	fixing version requirements
 - 2022-09-05	release 0.2.1
 - 2022-09-05	notice on invalid path of newTabPage
 - 2022-09-05	release 0.2.0
