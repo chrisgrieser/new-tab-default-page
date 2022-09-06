@@ -4,6 +4,12 @@
 
 [Obsidian](https://obsidian.md/) plugin to open a note of your choice when creating a new tab, like in the browser. That's it, that's the plugin.
 
+## Usage
+- Set the note (or image) you want to load in new tabs in the settings.
+- Open a new tab.
+
+ℹ️ *Whether the new note is opened in Reading Mode or Edit Mode is determined by the Obsidian setting `Editor → Default view for new tabs`.*
+
 ## Installation
 Available in Obsidian's Community Plugin Browser via: `Settings` → `Community Plugins` → `Browse` → Search for *"New Tab Default Page"*
 
