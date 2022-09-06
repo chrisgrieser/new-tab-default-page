@@ -1,3 +1,5 @@
+- 2022-09-06	release 0.4.0
+- 2022-09-06	layout-change instead of file-open (thx @pjeby)
 - 2022-09-06	release 0.3.0
 - 2022-09-06	getFirstLinkpathDest not getAbstractFileByPath
 - 2022-09-05	fixing version requirements
