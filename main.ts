@@ -1,4 +1,4 @@
-import { Notice, Plugin, TFile } from "obsidian";
+import { Notice, Plugin, WorkspaceLeaf } from "obsidian";
 import { DefaultNewTabPageSettingTab } from "./settings";
 
 interface DefaultNewTabPageSettings { filePath: string }
@@ -12,13 +12,16 @@ export default class defaultNewTabPage extends Plugin {
 		await this.loadSettings();
 		this.addSettingTab(new DefaultNewTabPageSettingTab(this.app, this));
 
-		// this event is triggered every time a new file is opened, even in the
-		// same tab. However, the 'window-open' event does not seem to work for
-		// new tabs. Therefore this event is used, with a check in the callback
-		// function that it is indeed a new empty pane that was opened.
-		this.registerEvent(
-			this.app.workspace.on("file-open", this.openNewTabPage)
-		);
+		app.workspace.onLayoutReady(() => {
+			// Get existing leaves (tabs)
+			const existingLeaves = new WeakSet<WorkspaceLeaf>();
+			app.workspace.iterateAllLeaves(leaf => { existingLeaves.add(leaf) });
+
+			// When layout changes, check for new ones
+			this.registerEvent(app.workspace.on("layout-change", () => {
+				this.checkForNewTab(existingLeaves);
+			}));
+		});
 
 		console.log("New Tab Default Page Plugin loaded.");
 	}
@@ -33,24 +36,31 @@ export default class defaultNewTabPage extends Plugin {
 
 	async onunload() { console.log("New Tab Default Page Plugin unloaded.") }
 
-	openNewTabPage = async () => {
-		const newTabPage = this.settings.filePath;
+	checkForNewTab (existingLeaves: WeakSet<WorkspaceLeaf>) { // WeakSet won't hold references, unused leaves are automatically removed
+		app.workspace.iterateAllLeaves(leaf => {
+			if (existingLeaves.has(leaf)) return; // only ever check a new leaf once
+			existingLeaves.add(leaf);
 
-		// abort when setting empty (e.g., on install)
+			const tabIsEmpty = !leaf.view || leaf.view.getViewType() === "empty";
+			if (!tabIsEmpty) return;
+
+			this.openDefaultPage (leaf);
+		});
+	}
+
+	openDefaultPage (leaf: WorkspaceLeaf) {
+		const newTabPage = this.settings.filePath;
 		if (!newTabPage) return;
 
-		// abort when not empty tab
-		const tabNotEmpty = Boolean(app.workspace.getActiveFile());
-		if (tabNotEmpty) return;
-
-		// abort when path invalid
-		const tFiletoOpen = this.app.metadataCache.getFirstLinkpathDest(newTabPage, "/"); // `getFirstLinkpathDest` more reliably finds match than `getAbstractFileByPath`, e.g. with missing file extensions
-		if (!tFiletoOpen) {
-			console.error(`filepath to open is invalid: ${newTabPage}`);
+		const tFiletoOpen = app.metadataCache.getFirstLinkpathDest(newTabPage, "/"); // `getFirstLinkpathDest` more reliably finds match than `getAbstractFileByPath`, e.g. with missing file extensions
+		const pathIsValid = Boolean(tFiletoOpen);
+		if (!pathIsValid) {
 			new Notice (`${newTabPage} is not a valid path to a note in your vault.`);
 			return;
 		}
 
-		await app.workspace.activeLeaf.openFile(tFiletoOpen);
-	};
+		app.workspace.setActiveLeaf(leaf, false, true); // ensure this is the active leaf, since `layout-change` can trigger before the the leaf becomes active
+		app.workspace.activeLeaf.openFile(tFiletoOpen);
+	}
+
 }
