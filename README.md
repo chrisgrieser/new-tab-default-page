@@ -4,8 +4,8 @@
 
 [Obsidian](https://obsidian.md/) plugin to open a note of your choice when creating a new tab, like in the browser.
 
-## Usage: 3 Steps
-1. Set the note you want to load in new tabs in the settings. 
+## Usage
+1. Set the note to open in new tabs in the plugin settings. 
 2. Open a new tab. 
 3. There is no step 3.
 
