@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/github/downloads/chrisgrieser/new-tab-default-page/total?label=Total%20Downloads&style=plastic) ![](https://img.shields.io/github/v/release/chrisgrieser/new-tab-default-page?label=Latest%20Release&style=plastic) [![](https://img.shields.io/badge/changelog-click%20here-FFE800?style=plastic)](Changelog.md)
 
-[Obsidian](https://obsidian.md/) plugin to open a note of your choice when creating a new tab, like in the browser. That's it, that's the plugin.
+[Obsidian](https://obsidian.md/) plugin to open a note of your choice when creating a new tab, like in the browser.
 
 ## Usage: 3 Steps
 1. Set the note you want to load in new tabs in the settings. 
