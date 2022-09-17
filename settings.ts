@@ -26,5 +26,20 @@ export class DefaultNewTabPageSettingTab extends PluginSettingTab {
 					await this.plugin.saveSettings();
 				})
 			);
+
+		new Setting(containerEl)
+			.setName("Mode")
+			.setDesc("Select the mode in which the new note will be opened.")
+			.addDropdown((dropdown) => { dropdown
+				.addOption("obsidian-default", "Obsidian Default") // TODO: figure out how Records work to use `addOptions` instead
+				.addOption("live-preview", "Live Preview")
+				.addOption("reading-mode", "Reading Mode")
+				.addOption("source-mode", "Source Mode")
+				.setValue(this.plugin.settings.mode)
+				.onChange(async (value) => {
+					this.plugin.settings.mode = value;
+					await this.plugin.saveSettings();
+				});
+			});
 	}
 }

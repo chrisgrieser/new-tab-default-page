@@ -1,9 +1,15 @@
 import { Notice, Plugin, WorkspaceLeaf } from "obsidian";
 import { DefaultNewTabPageSettingTab } from "./settings";
 
-interface DefaultNewTabPageSettings { filePath: string }
+interface DefaultNewTabPageSettings {
+	filePath: string,
+	mode: string
+}
 
-const DEFAULT_SETTINGS: Partial<DefaultNewTabPageSettings> = { filePath: "" };
+const DEFAULT_SETTINGS: Partial<DefaultNewTabPageSettings> = {
+	filePath: "",
+	mode: "obsidian-default"
+};
 
 export default class defaultNewTabPage extends Plugin {
 	settings: DefaultNewTabPageSettings;
@@ -44,11 +50,11 @@ export default class defaultNewTabPage extends Plugin {
 			const tabIsEmpty = !leaf.view || leaf.view.getViewType() === "empty";
 			if (!tabIsEmpty) return;
 
-			this.openDefaultPage (leaf);
+			this.openDefaultPage(leaf);
 		});
 	}
 
-	openDefaultPage (leaf: WorkspaceLeaf) {
+	async openDefaultPage (leaf: WorkspaceLeaf) {
 		const newTabPage = this.settings.filePath;
 		if (!newTabPage) return;
 
@@ -58,8 +64,28 @@ export default class defaultNewTabPage extends Plugin {
 			new Notice (`${newTabPage} is not a valid path to a note in your vault.`);
 			return;
 		}
+		await leaf.openFile(tFiletoOpen);
+		this.setViewMode(leaf, this.settings.mode);
+	}
 
-		leaf.openFile(tFiletoOpen);
+	setViewMode (leaf: WorkspaceLeaf, targetMode: string) {
+		console.log(targetMode);
+
+		const newMode = leaf.getViewState();
+		switch (targetMode) {
+			case "source-mode":
+				newMode.state.mode = "source";
+				newMode.state.source = true;
+				break;
+			case "live-preview":
+				newMode.state.mode = "source";
+				newMode.state.source = false;
+				break;
+			case "reading-mode":
+				newMode.state.mode = "preview";
+				break;
+		}
+		leaf.setViewState(newMode);
 	}
 
 }
