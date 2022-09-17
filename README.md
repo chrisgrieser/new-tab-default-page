@@ -15,7 +15,7 @@
 2. Set the mode in which the note should open.
 3. Open a new tab. 
 
-> **Info**  
+> **Note**  
 > Closing your last tab also redirects you to your new tab page.
 
 ## Installation
