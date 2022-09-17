@@ -7,7 +7,7 @@
 ## Examples for Default New Tab Pages
 - your homepage note (in Reading Mode)
 - a scratchpad note (in Source Mode)
-- an image, essentially serving as a nice new-tab-wallpaper
+- an image, essentially serving as new-tab-wallpaper
 - …
 
 ## Usage
