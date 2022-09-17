@@ -69,23 +69,21 @@ export default class defaultNewTabPage extends Plugin {
 	}
 
 	setViewMode (leaf: WorkspaceLeaf, targetMode: string) {
-		console.log(targetMode);
-
-		const newMode = leaf.getViewState();
+		const view = leaf.getViewState();
 		switch (targetMode) {
 			case "source-mode":
-				newMode.state.mode = "source";
-				newMode.state.source = true;
+				view.state.mode = "source";
+				view.state.source = true;
 				break;
 			case "live-preview":
-				newMode.state.mode = "source";
-				newMode.state.source = false;
+				view.state.mode = "source";
+				view.state.source = false;
 				break;
 			case "reading-mode":
-				newMode.state.mode = "preview";
+				view.state.mode = "preview";
 				break;
 		}
-		leaf.setViewState(newMode);
+		leaf.setViewState(view);
 	}
 
 }
