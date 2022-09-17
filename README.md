@@ -16,7 +16,7 @@
 3. Open a new tab. 
 
 > **Note**  
-> Closing your last tab also redirects you to your new tab page.
+> Closing your last tab also opens your new tab page.
 
 ## Installation
 Available in Obsidian's Community Plugin Browser via: `Settings` → `Community Plugins` → `Browse` → Search for *"New Tab Default Page"*
@@ -25,4 +25,4 @@ Available in Obsidian's Community Plugin Browser via: `Settings` → `Community 
 <a href='https://ko-fi.com/Y8Y86SQ91' target='_blank'><img height='36' style='border:0px;height:36px;' src='https://cdn.ko-fi.com/cdn/kofi1.png?v=3' border='0' alt='Buy Me a Coffee at ko-fi.com' /></a>
 
 ## Thanks
-Thanks to [@pjeby](https://github.com/pjeby) and various people from the `#plugin-dev` channel helping me out.
+Thanks to [@pjeby](https://github.com/pjeby) and various people from the `#plugin-dev` channel for helping me out.
