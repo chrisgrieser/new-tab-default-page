@@ -4,6 +4,9 @@
 
 [Obsidian](https://obsidian.md/) plugin to open a note of your choice when creating a new tab, like in the browser.
 
+> **Note**  
+> This plugin requires Obsidian 0.16, which is currently only accessible for Obsidian Insiders ([Catalyst License](https://help.obsidian.md/Licenses+%26+Payment/Catalyst+license)).
+
 ## Examples for Default New Tab Pages
 - your homepage note (in Reading Mode)
 - a scratchpad note (in Source Mode)
