@@ -1,3 +1,4 @@
+- 2022-09-22	release 0.5.1
 - 2022-09-17	release 0.5.0
 - 2022-09-17	force view mode for new tab page
 - 2022-09-07	release 0.4.2
