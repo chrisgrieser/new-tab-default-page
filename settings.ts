@@ -16,9 +16,20 @@ export class DefaultNewTabPageSettingTab extends PluginSettingTab {
 		containerEl.empty();
 
 		new Setting(containerEl)
+			.setName("Quick Switcher on New Tab.")
+			.setDesc("Open the Quick Switcher instead of opening the new tab page. Currently only works with the Quick Switcher Core Plugin. (If enabled, the settings below will have no effect.)")
+			.addToggle(toggle => { toggle
+				.setValue(this.plugin.settings.useQuickSwitcher)
+				.onChange(async (value) => {
+					this.plugin.settings.useQuickSwitcher = value;
+					await this.plugin.saveSettings();
+				});
+			});
+
+		new Setting(containerEl)
 			.setName("Default New Tab Page")
 			.setDesc("Path of the note that will be opened in new tabs. (Images and PDFs also work.)")
-			.addText((text) => text
+			.addText(text => text
 				.setPlaceholder("Meta/Homepage.md")
 				.setValue(this.plugin.settings.filePath)
 				.onChange(async (value) => {
@@ -30,7 +41,7 @@ export class DefaultNewTabPageSettingTab extends PluginSettingTab {
 		new Setting(containerEl)
 			.setName("Mode")
 			.setDesc("Select the mode in which the new note will be opened.")
-			.addDropdown((dropdown) => { dropdown
+			.addDropdown(dropdown => { dropdown
 				.addOption("obsidian-default", "Obsidian Default") // TODO: figure out how Records work to use `addOptions` instead
 				.addOption("live-preview", "Live Preview")
 				.addOption("reading-mode", "Reading Mode")

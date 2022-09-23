@@ -1,14 +1,32 @@
 import { Notice, Plugin, WorkspaceLeaf } from "obsidian";
 import { DefaultNewTabPageSettingTab } from "./settings";
 
+// add type safety for the undocumented methods
+declare module "obsidian" {
+	interface App {
+		internalPlugins: {
+			plugins: {
+				switcher: { enabled: boolean }
+			};
+		};
+		commands: {
+			executeCommandById: (commandID: string) => boolean;
+		}
+
+	}
+}
+
+// Default Settings
 interface DefaultNewTabPageSettings {
+	useQuickSwitcher: boolean,
 	filePath: string,
-	mode: string
+	mode: string,
 }
 
 const DEFAULT_SETTINGS: Partial<DefaultNewTabPageSettings> = {
+	useQuickSwitcher: false,
 	filePath: "",
-	mode: "obsidian-default"
+	mode: "obsidian-default",
 };
 
 export default class defaultNewTabPage extends Plugin {
@@ -50,7 +68,8 @@ export default class defaultNewTabPage extends Plugin {
 			const tabIsEmpty = !leaf.view || leaf.view.getViewType() === "empty";
 			if (!tabIsEmpty) return;
 
-			this.openDefaultPage(leaf);
+			if (this.settings.useQuickSwitcher) this.triggerQuickSwitcher();
+			else this.openDefaultPage(leaf);
 		});
 	}
 
@@ -66,6 +85,11 @@ export default class defaultNewTabPage extends Plugin {
 		}
 		await leaf.openFile(tFiletoOpen);
 		this.setViewMode(leaf, this.settings.mode);
+	}
+
+	triggerQuickSwitcher () {
+		const success = this.app.commands.executeCommandById("switcher:open");
+		if (!success) new Notice ("Please enable the Quick Switcher Core Plugin for this to work.");
 	}
 
 	setViewMode (leaf: WorkspaceLeaf, targetMode: string) {
