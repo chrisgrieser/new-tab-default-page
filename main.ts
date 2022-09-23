@@ -18,13 +18,13 @@ declare module "obsidian" {
 
 // Default Settings
 interface DefaultNewTabPageSettings {
-	useQuickSwitcher: boolean,
+	whatToOpen: string,
 	filePath: string,
 	mode: string,
 }
 
 const DEFAULT_SETTINGS: Partial<DefaultNewTabPageSettings> = {
-	useQuickSwitcher: false,
+	whatToOpen: "new-tab-page",
 	filePath: "",
 	mode: "obsidian-default",
 };
@@ -68,9 +68,14 @@ export default class defaultNewTabPage extends Plugin {
 			const tabIsEmpty = !leaf.view || leaf.view.getViewType() === "empty";
 			if (!tabIsEmpty) return;
 
-			if (this.settings.useQuickSwitcher) this.triggerQuickSwitcher();
-			else this.openDefaultPage(leaf);
+			if (this.settings.whatToOpen === "new-tab-page") this.openDefaultPage(leaf);
+			else this.runCommand(this.settings.whatToOpen);
 		});
+	}
+
+	runCommand (commandId: string) {
+		const success = this.app.commands.executeCommandById(commandId);
+		if (!success) new Notice ("Plugin for the New Tab Page is not enabled.");
 	}
 
 	async openDefaultPage (leaf: WorkspaceLeaf) {
@@ -85,11 +90,6 @@ export default class defaultNewTabPage extends Plugin {
 		}
 		await leaf.openFile(tFiletoOpen);
 		this.setViewMode(leaf, this.settings.mode);
-	}
-
-	triggerQuickSwitcher () {
-		const success = this.app.commands.executeCommandById("switcher:open");
-		if (!success) new Notice ("Please enable the Quick Switcher Core Plugin for this to work.");
 	}
 
 	setViewMode (leaf: WorkspaceLeaf, targetMode: string) {
