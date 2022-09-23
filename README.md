@@ -8,10 +8,11 @@
 > This plugin requires Obsidian 0.16, which is currently only accessible for Obsidian Insiders ([Catalyst License](https://help.obsidian.md/Licenses+%26+Payment/Catalyst+license)).
 
 ## Examples for Default New Tab Pages
-- your homepage note (in Reading Mode)
-- a scratchpad note (in Source Mode)
+- your homepage note
+- your daily note
+- a scratchpad note
+- trigger a quick switcher
 - an image, essentially serving as new-tab-wallpaper
-- open the Quick Switcher[^1]
 - …
 
 ## Usage
