@@ -23,9 +23,9 @@ export class DefaultNewTabPageSettingTab extends PluginSettingTab {
 				.addOption("daily-notes", "Daily Note") // except for the new tab page, the values should be equal to the command-id to run
 				.addOption("switcher:open", "Quick Switcher (Core Plugin)")
 				.addOption("obsidian-another-quick-switcher:search-command_Recommended search", "Another Quick Switcher")
-				.setValue(this.plugin.settings.mode)
+				.setValue(this.plugin.settings.whatToOpen)
 				.onChange(async (value) => {
-					this.plugin.settings.mode = value;
+					this.plugin.settings.whatToOpen = value;
 					await this.plugin.saveSettings();
 				});
 			});
