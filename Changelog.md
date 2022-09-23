@@ -1,3 +1,5 @@
+- 2022-09-23	release 0.6.0
+- 2022-09-23	option to open quick switcher instead
 - 2022-09-22	release 0.5.1
 - 2022-09-17	release 0.5.0
 - 2022-09-17	force view mode for new tab page
