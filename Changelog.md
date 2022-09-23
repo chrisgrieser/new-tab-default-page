@@ -1,3 +1,5 @@
+- 2022-09-23	release 0.7.0
+- 2022-09-23	options to use AQS or open daily note
 - 2022-09-23	release 0.6.0
 - 2022-09-23	option to open quick switcher instead
 - 2022-09-22	release 0.5.1
