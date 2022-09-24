@@ -7,12 +7,23 @@
 > **Note**  
 > This plugin requires Obsidian 0.16, which is currently only accessible for Obsidian Insiders ([Catalyst License](https://help.obsidian.md/Licenses+%26+Payment/Catalyst+license)).
 
+<!--toc:start-->
+  - [Examples for Default New Tab Pages](#examples-for-default-new-tab-pages)
+  - [Usage](#usage)
+  - [Advanced Examples](#advanced-examples)
+    - [Random Quote](#random-quote)
+  - [Installation](#installation)
+  - [Donate](#donate)
+  - [Thanks](#thanks)
+<!--toc:end-->
+
 ## Examples for Default New Tab Pages
 - your homepage note
 - your daily note
 - a scratchpad note
 - trigger a quick switcher
-- an image, essentially serving as new-tab-wallpaper
+- an image
+- a random quote
 - …
 
 ## Usage
@@ -23,6 +34,20 @@
 > **Note**  
 > Closing your last tab also opens your new tab page.
 
+## Advanced Examples
+### Random Quote
+To have a random quote on every new tab, you can use dataview and paste the following code as a dataviewjs-codeblock in a note. 
+
+```js
+const quote = JSON.parse(await request("https://api.quotable.io/random"));
+dv.span(`> "${quote.content}"  \n> <div style="text-align:end; color:var(--text-muted); font-weight: 600; font-size:90%;">– ${quote.author}</div>`);
+```
+
+Then, enter the path of the note in the *New Tab Default Page* settings, and select *Reading Mode*. Now every new note will display a random quote.
+
+### Submit your own idea
+Have a cool idea of your own? Feel free to make a PR to this README and submit your own idea.
+
 ## Installation
 Available in Obsidian's Community Plugin Browser via: `Settings` → `Community Plugins` → `Browse` → Search for *"New Tab Default Page"*
 
@@ -31,5 +56,3 @@ Available in Obsidian's Community Plugin Browser via: `Settings` → `Community 
 
 ## Thanks
 Thanks to [@pjeby](https://github.com/pjeby) and various people from the `#plugin-dev` channel for helping me out.
-
-[^1]: Currently, only the Quick Switcher Core Plugin is supported.
