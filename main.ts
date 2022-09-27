@@ -65,17 +65,24 @@ export default class defaultNewTabPage extends Plugin {
 			if (existingLeaves.has(leaf)) return; // only ever check a new leaf once
 			existingLeaves.add(leaf);
 
-			const tabIsEmpty = !leaf.view || leaf.view.getViewType() === "empty";
-			if (!tabIsEmpty) return;
+			if (!this.tabIsEmpty(leaf)) return;
 
 			if (this.settings.whatToOpen === "new-tab-page") this.openDefaultPage(leaf);
-			else this.runCommand(this.settings.whatToOpen);
+			else this.runCommand(this.settings.whatToOpen, leaf);
 		});
 	}
 
-	runCommand (commandId: string) {
-		const success = this.app.commands.executeCommandById(commandId);
-		if (!success) new Notice ("Plugin for the New Tab Page is not enabled.");
+	runCommand (commandId: string, leaf: WorkspaceLeaf) {
+		const delay = commandId.includes("switcher") ? 200 : 0; // eslint-disable-line no-magic-numbers
+		setTimeout(() => {
+			if (!this.tabIsEmpty(leaf)) return;
+			const success = this.app.commands.executeCommandById(commandId);
+			if (!success) new Notice ("Plugin for the New Tab Page is not enabled.");
+		}, delay);
+	}
+
+	tabIsEmpty (leaf: WorkspaceLeaf) {
+		return !leaf.view || leaf.view.getViewType() === "empty";
 	}
 
 	async openDefaultPage (leaf: WorkspaceLeaf) {
