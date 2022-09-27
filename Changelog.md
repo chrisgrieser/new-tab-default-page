@@ -1,3 +1,5 @@
+- 2022-09-27	release 0.7.2
+- 2022-09-27	fix #2
 - 2022-09-24	release 0.7.1
 - 2022-09-24	fix for new version of AQS
 - 2022-09-23	release 0.7.0
