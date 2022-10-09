@@ -17,15 +17,15 @@ export class DefaultNewTabPageSettingTab extends PluginSettingTab {
 
 		new Setting(containerEl)
 			.setName("New Tab opens…")
-			.setDesc("What to open when a new tab is created. (Daily Notes and Quick Switchers require the respective plugin to be enabled.)")
+			.setDesc("What to open when a new tab is created. (Except for the new tab page, the respective plugin needs to be enabled.)")
 			.addDropdown(dropdown => { dropdown
 				// INFO: except for the new tab page, the values should be equal to
 				// the command-id to run
 				.addOption("new-tab-page", "New Tab Page") // TODO: figure out how Records work to use `addOptions` instead
-				.addOption("daily-notes", "Daily Note")
+				.addOption("daily-notes", "Daily Note (Core Plugin)")
 				.addOption("switcher:open", "Quick Switcher (Core Plugin)")
 				.addOption("obsidian-another-quick-switcher:search-command_recent-search", "Another Quick Switcher")
-				.addOption("random-note", "Random Note")
+				.addOption("random-note", "Random Note (Core Plugin)")
 				.setValue(this.plugin.settings.whatToOpen)
 				.onChange(async (value) => {
 					this.plugin.settings.whatToOpen = value;
