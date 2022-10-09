@@ -1,3 +1,6 @@
+- 2022-10-09	release 0.8.0
+- 2022-10-09	Merge pull request #3 from shabegom/master
+- 2022-10-09	add random note option
 - 2022-09-27	release 0.7.2
 - 2022-09-27	fix #2
 - 2022-09-24	release 0.7.1
