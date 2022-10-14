@@ -23,10 +23,9 @@ export class DefaultNewTabPageSettingTab extends PluginSettingTab {
 				// the command-id to run
 				.addOption("new-tab-page", "New Tab Page") // TODO: figure out how Records work to use `addOptions` instead
 				.addOption("daily-notes", "Daily Note (Core Plugin)")
+				.addOption("periodic-notes:open-daily-note", "Daily Note (Periodic Notes Plugin)")
 				.addOption("periodic-notes:open-weekly-note", "Weekly Note (Periodic Notes Plugin)")
 				.addOption("periodic-notes:open-monthly-note", "Monthly Note (Periodic Notes Plugin)")
-				// .addOption("periodic-notes:open-quarterly-note", "Quarterly Note (Periodic Notes Plugin)")
-				// .addOption("periodic-notes:open-yearly-note", "Yearly Note (Periodic Notes Plugin)")
 				.addOption("random-note", "Random Note (Core Plugin)")
 				.addOption("switcher:open", "Quick Switcher (Core Plugin)")
 				.addOption("obsidian-another-quick-switcher:search-command_recent-search", "Another Quick Switcher")
