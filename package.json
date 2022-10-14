@@ -1,6 +1,6 @@
 {
 	"name": "{{plugin-name}}",
-	"version": "0.9.0",
+	"version": "",
 	"description": "{{plugin-desc}}",
 	"main": "main.js",
 	"scripts": {
