@@ -1,4 +1,5 @@
-- 2022-10-14	release 
+- 2022-10-14	release 0.9.1
+- 2022-10-14	release
 - 2022-10-14	implement
 - 2022-10-14	release 0.9.0
 - 2022-10-14	Support for periodic notes (#4)
