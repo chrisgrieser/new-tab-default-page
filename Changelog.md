@@ -1,3 +1,5 @@
+- 2022-10-23	release 0.10.0
+- 2022-10-23	enable mobile use (#6)
 - 2022-10-14	release 0.9.1
 - 2022-10-14	release
 - 2022-10-14	implement
