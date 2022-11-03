@@ -4,6 +4,9 @@
 
 [Obsidian](https://obsidian.md/) plugin to open a note of your choice or the Quick Switcher when creating a new tab, like in the browser.
 
+➡️ [YouTube Demo of what you can with the
+plugin.](https://www.youtube.com/watch?v=PKcnKqErwJw&t=2s)
+
 <!--toc:start-->
   - [Examples for Default New Tab Pages](#examples-for-default-new-tab-pages)
   - [Usage](#usage)
@@ -32,6 +35,7 @@
 > Closing your last tab also opens your new tab page.
 
 ## Advanced Examples
+
 ### Random Quote
 To have a random quote on every new tab, you can use dataview and paste the following code as a dataviewjs-codeblock in a note.
 
