@@ -49,9 +49,6 @@ Then, enter the path of the note in the *New Tab Default Page* settings, and sel
 ### Submit your own idea
 Have a cool idea of your own? Feel free to make a PR to this README and submit your own idea.
 
-## Caveats
-Opening a new popout window initially also triggers the new tab action, even if you are opening something in the popout window [see #7](https://github.com/chrisgrieser/new-tab-default-page/issues/7).
-
 ## Installation
 Available in Obsidian's Community Plugin Browser via: `Settings` → `Community Plugins` → `Browse` → Search for *"New Tab Default Page"*
 
