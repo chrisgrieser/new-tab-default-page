@@ -34,8 +34,8 @@
 2. Set the mode in which the note should open.
 3. Open a new tab.
 
-> __Note__
-> Closing your last tab also opens your new tab page.
+> __Note__  
+> Closing your last tab also opens the new tab page.
 
 ## Advanced Examples
 
