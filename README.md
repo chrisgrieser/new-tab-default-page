@@ -4,7 +4,7 @@
 
 [Obsidian](https://obsidian.md/) plugin to open a note of your choice or the Quick Switcher when creating a new tab, like in the browser.
 
-📽️ [YouTube Demo of the plugin by
+> 📽️ [YouTube Demo of the plugin by
 Josh Plunkett.](https://www.youtube.com/watch?v=PKcnKqErwJw&t=2s)
 
 <!--toc:start-->
