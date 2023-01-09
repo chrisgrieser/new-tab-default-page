@@ -42,6 +42,8 @@ export default class defaultNewTabPage extends Plugin {
 			app.workspace.iterateAllLeaves(leaf => { existingLeaves.add(leaf) });
 
 			// When layout changes, check for new ones
+			// second arg needs to be arrow-function, so that `this` gets set
+			// correctly. https://discord.com/channels/686053708261228577/840286264964022302/1016341061641183282
 			this.registerEvent(app.workspace.on("layout-change", () => {
 				this.checkForNewTab(existingLeaves);
 			}));
