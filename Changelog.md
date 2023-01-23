@@ -1,3 +1,6 @@
+- 2023-01-23	release 0.10.2
+- 2023-01-23	fix: rm superfluous notice (fix #11)
+- 2023-01-09	chore
 - 2022-12-05	release 0.10.1
 - 2022-12-05	add funding-url to manifest
 - 2022-10-23	release 0.10.0
