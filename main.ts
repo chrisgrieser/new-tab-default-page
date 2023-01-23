@@ -78,7 +78,8 @@ export default class defaultNewTabPage extends Plugin {
 		const delay = commandId.includes("switcher") ? 200 : 0; // eslint-disable-line no-magic-numbers
 		setTimeout(() => {
 			if (!this.tabIsEmpty(leaf)) return;
-			const success = this.app.commands.executeCommandById(commandId);
+			const commandExists = this.app.commands.executeCommandById(commandId);
+			const success = commandExists !== false; // INFO on success, commandExists is undefined, otherwise false
 			if (!success) new Notice ("Plugin for the New Tab Page is not enabled.");
 		}, delay);
 	}
