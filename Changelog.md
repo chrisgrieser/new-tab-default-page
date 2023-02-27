@@ -1,3 +1,6 @@
+- 2023-02-27	release 0.11.0
+- 2023-02-27	Merge pull request #12 from Lisandra-dev/main
+- 2023-02-27	feat: adding QuickSwitcher++
 - 2023-01-23	release 0.10.2
 - 2023-01-23	fix: rm superfluous notice (fix #11)
 - 2023-01-09	chore
