@@ -29,6 +29,7 @@ export class DefaultNewTabPageSettingTab extends PluginSettingTab {
 				.addOption("random-note", "Random Note (Core Plugin)")
 				.addOption("switcher:open", "Quick Switcher (Core Plugin)")
 				.addOption("obsidian-another-quick-switcher:search-command_recent-search", "Another Quick Switcher")
+				.addOption("darlal-switcher-plus:switcher-plus:open", "Quick Switcher++")
 				.setValue(this.plugin.settings.whatToOpen)
 				.onChange(async (value) => {
 					this.plugin.settings.whatToOpen = value;
