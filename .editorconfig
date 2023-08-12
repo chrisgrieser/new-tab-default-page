@@ -5,5 +5,13 @@ root = true
 charset = utf-8
 insert_final_newline = true
 indent_style = tab
-indent_size = 4
-tab_width = 4
+indent_size = 3
+tab_width = 3
+
+[*.{yml,yaml}]
+indent_style = space
+indent_size = 2
+tab_width = 2
+
+[Makefile]
+indent_style = tab
