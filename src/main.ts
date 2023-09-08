@@ -86,6 +86,10 @@ export default class defaultNewTabPage extends Plugin {
 		}, delay);
 	}
 
+	// This function ensures compatibility with other plugins that might open
+	// new tabs as well (e.g. marcusolsson/obsidian-projects)
+	// The fix has been inspired by mirnovov/obsidian-homepage
+	// https://github.com/mirnovov/obsidian-homepage/blob/3d609ebfce7fdcdf9f6d2f39c60df860243a0c75/src/homepage.ts#L304
 	tabIsOpenedByOtherPlugin (leaf: WorkspaceLeaf) {
 		return (leaf as any)?.parentSplit.children.length != 1;
 	}
