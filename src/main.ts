@@ -69,6 +69,7 @@ export default class defaultNewTabPage extends Plugin {
 			existingLeaves.add(leaf);
 
 			if (!this.tabIsEmpty(leaf)) return;
+			if (this.tabIsOpenedByOtherPlugin(leaf)) return;
 
 			if (this.settings.whatToOpen === "new-tab-page") this.openDefaultPage(leaf);
 			else this.runCommand(this.settings.whatToOpen, leaf);
@@ -83,6 +84,14 @@ export default class defaultNewTabPage extends Plugin {
 			const success = commandExists !== false; // INFO on success, commandExists is undefined, otherwise false
 			if (!success) new Notice ("Plugin for the New Tab Page is not enabled.");
 		}, delay);
+	}
+
+	// This function ensures compatibility with other plugins that might open
+	// new tabs as well (e.g. marcusolsson/obsidian-projects)
+	// The fix has been inspired by mirnovov/obsidian-homepage
+	// https://github.com/mirnovov/obsidian-homepage/blob/3d609ebfce7fdcdf9f6d2f39c60df860243a0c75/src/homepage.ts#L304
+	tabIsOpenedByOtherPlugin (leaf: WorkspaceLeaf) {
+		return (leaf as any)?.parentSplit.children.length != 1;
 	}
 
 	tabIsEmpty (leaf: WorkspaceLeaf) {
