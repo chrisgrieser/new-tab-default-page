@@ -69,6 +69,7 @@ export default class defaultNewTabPage extends Plugin {
 			existingLeaves.add(leaf);
 
 			if (!this.tabIsEmpty(leaf)) return;
+			if (this.tabIsOpenedByOtherPlugin(leaf)) return;
 
 			if (this.settings.whatToOpen === "new-tab-page") this.openDefaultPage(leaf);
 			else this.runCommand(this.settings.whatToOpen, leaf);
@@ -83,6 +84,10 @@ export default class defaultNewTabPage extends Plugin {
 			const success = commandExists !== false; // INFO on success, commandExists is undefined, otherwise false
 			if (!success) new Notice ("Plugin for the New Tab Page is not enabled.");
 		}, delay);
+	}
+
+	tabIsOpenedByOtherPlugin (leaf: WorkspaceLeaf) {
+		return (leaf as any)?.parentSplit.children.length != 1;
 	}
 
 	tabIsEmpty (leaf: WorkspaceLeaf) {
