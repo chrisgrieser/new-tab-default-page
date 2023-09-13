@@ -21,12 +21,14 @@ interface DefaultNewTabPageSettings {
 	whatToOpen: string,
 	filePath: string,
 	mode: string,
+	compatibilityMode: boolean,
 }
 
 const DEFAULT_SETTINGS: Partial<DefaultNewTabPageSettings> = {
 	whatToOpen: "new-tab-page",
 	filePath: "",
 	mode: "obsidian-default",
+	compatibilityMode: false,
 };
 
 export default class defaultNewTabPage extends Plugin {
@@ -69,7 +71,6 @@ export default class defaultNewTabPage extends Plugin {
 			existingLeaves.add(leaf);
 
 			if (!this.tabIsEmpty(leaf)) return;
-			if (this.tabIsOpenedByOtherPlugin(leaf)) return;
 
 			if (this.settings.whatToOpen === "new-tab-page") this.openDefaultPage(leaf);
 			else this.runCommand(this.settings.whatToOpen, leaf);
@@ -86,16 +87,24 @@ export default class defaultNewTabPage extends Plugin {
 		}, delay);
 	}
 
-	// This function ensures compatibility with other plugins that might open
-	// new tabs as well (e.g. marcusolsson/obsidian-projects)
-	// The fix has been inspired by mirnovov/obsidian-homepage
-	// https://github.com/mirnovov/obsidian-homepage/blob/3d609ebfce7fdcdf9f6d2f39c60df860243a0c75/src/homepage.ts#L304
-	tabIsOpenedByOtherPlugin (leaf: WorkspaceLeaf) {
-		return (leaf as any)?.parentSplit.children.length != 1;
-	}
-
 	tabIsEmpty (leaf: WorkspaceLeaf) {
 		return !leaf.view || leaf.view.getViewType() === "empty";
+	}
+
+	// In compatibility mode, we have to check if the view state type of a leaf is
+	// still empty at the next tick. Other plugins might open a new leaf and change the view state
+	// after opening the leaf. The layout-change listener is triggered before the state
+	// might be changed. This might cause this.checkForNewTab to conclude that the view state
+	// is empty, whilst in fact is only STILL empty but will be overwritten.
+	// An example of how other plugins might open leafs and change the view state:
+	// https://github.com/marcusolsson/obsidian-projects/blob/1.16.3/src/main.ts#L207
+	async leafIsStillEmpty (leaf: WorkspaceLeaf) {
+		return new Promise((resolve, reject) => {
+			process.nextTick(() => {
+				const viewStateAfterDelay = leaf.getViewState()
+				resolve((viewStateAfterDelay as any)?.type === 'empty')
+			})
+		});
 	}
 
 	async openDefaultPage (leaf: WorkspaceLeaf) {
@@ -108,6 +117,13 @@ export default class defaultNewTabPage extends Plugin {
 			new Notice (`${newTabPage} is not a valid path to a note in your vault.`);
 			return;
 		}
+
+		
+		if(this.settings.compatibilityMode){
+			// When compatibility mode is enabled, check if leaf is still empty
+			if(!await this.leafIsStillEmpty(leaf)) return;
+		}
+		
 		await leaf.openFile(tFiletoOpen);
 		this.setViewMode(leaf, this.settings.mode);
 	}
