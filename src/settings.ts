@@ -64,10 +64,21 @@ export class DefaultNewTabPageSettingTab extends PluginSettingTab {
 				})
 				.setValue(this.plugin.settings.mode)
 					.onChange(async (value) => {
-					this.plugin.settings.mode = value;
-					await this.plugin.saveSettings();
-				});
+						this.plugin.settings.mode = value;
+						await this.plugin.saveSettings();
+					});
 			});
 
+		new Setting(this.containerEl)
+			.setName("Compatability mode")
+			.setDesc("Enable compatability mode for other plugins (e.g. Obsidian Projects) which open new tabs. This introduces minor delays.")
+			.addToggle((toggle) => {
+			  toggle
+				 .setValue(this.plugin.settings.compatibilityMode)
+				 .onChange(async (value) => {
+					this.plugin.settings.compatibilityMode = value;
+					await this.plugin.saveSettings();
+				})
+			});
 	}
 }
