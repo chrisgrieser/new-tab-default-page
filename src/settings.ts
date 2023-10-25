@@ -16,7 +16,7 @@ export class DefaultNewTabPageSettingTab extends PluginSettingTab {
 		containerEl.empty();
 
 		new Setting(containerEl)
-			.setName("New Tab opens…")
+			.setName("New tab opens…")
 			.setDesc(
 				"What to open when a new tab is created. (Except for the new tab page, the respective plugin needs to be enabled.)",
 			)
@@ -43,7 +43,7 @@ export class DefaultNewTabPageSettingTab extends PluginSettingTab {
 			});
 
 		new Setting(containerEl)
-			.setName("Default New Tab Page")
+			.setName("Default new tab page")
 			.setDesc(
 				"Path of the note that will be opened in new tabs. Images and PDFs also work. Only takes effect when the setting above is 'New Tab Page'.",
 			)
@@ -76,7 +76,7 @@ export class DefaultNewTabPageSettingTab extends PluginSettingTab {
 			});
 
 		new Setting(this.containerEl)
-			.setName("Compatibility mode")
+			.setName("/* Compatibility mode */")
 			.setDesc(
 				"Enable compatibility mode for other plugins (e.g. Obsidian Projects) which open new tabs. This introduces minor delays.",
 			)
