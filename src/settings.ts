@@ -76,7 +76,7 @@ export class DefaultNewTabPageSettingTab extends PluginSettingTab {
 			});
 
 		new Setting(this.containerEl)
-			.setName("/* Compatibility mode */")
+			.setName("Compatibility mode")
 			.setDesc(
 				"Enable compatibility mode for other plugins (e.g. Obsidian Projects) which open new tabs. This introduces minor delays.",
 			)
