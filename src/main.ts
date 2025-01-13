@@ -127,9 +127,7 @@ export default class defaultNewTabPage extends Plugin {
 		}
 
 		// When compatibility mode is enabled, check if leaf is still empty
-		if (this.settings.compatibilityMode) {
-			if (!(await this.leafIsStillEmpty(leaf))) return;
-		}
+		if (this.settings.compatibilityMode && !(await this.leafIsStillEmpty(leaf))) return;
 
 		await leaf.openFile(tFiletoOpen);
 		this.setViewMode(leaf, this.settings.mode);

@@ -32,7 +32,8 @@ export class DefaultNewTabPageSettingTab extends PluginSettingTab {
 						"periodic-notes:open-monthly-note": "Monthly Note (Periodic Notes Plugin)",
 						"random-note": "Random Note (Core Plugin)",
 						"switcher:open": "Quick Switcher (Core Plugin)",
-						"obsidian-another-quick-switcher:search-command_recent-search": "Another Quick Switcher",
+						"obsidian-another-quick-switcher:search-command_recent-search":
+							"Another Quick Switcher",
 						"darlal-switcher-plus:switcher-plus:open": "Quick Switcher++",
 					})
 					.setValue(this.plugin.settings.whatToOpen)
