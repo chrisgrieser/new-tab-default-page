@@ -2,7 +2,7 @@
 	"name": "New Tab Default Page",
 	"description": "Open a note of your choice when creating a new tab, like in the browser.",
 	"author": "Chris Grieser",
-	"version": "0.11.7",
+	"version": "0.11.8",
 	"keywords": [],
 	"license": "MIT",
 	"main": "main.js",
